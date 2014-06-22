@@ -165,7 +165,7 @@ class RandomLayer(BaseRandomLayer):
     array of the same shape as its argument (the input activation array, of
     shape [n_samples, n_hidden]).  Functions provided are 'sine', 'tanh',
     'tribas', 'inv_tribas', 'sigmoid', 'hardlim', 'softlim', 'gaussian',
-    'multiquadric', or 'inv_multiquadric'.
+    'multiquadric', 'inv_multiquadric' and 'reclinear'.
 
     Parameters
     ----------
@@ -192,8 +192,8 @@ class RandomLayer(BaseRandomLayer):
 
         It must be one of 'tanh', 'sine', 'tribas', 'inv_tribas',
         'sigmoid', 'hardlim', 'softlim', 'gaussian', 'multiquadric',
-        'inv_multiquadric' or a callable.  If None is given, 'tanh'
-        will be used.
+        'inv_multiquadric', 'reclinear' or a callable.  If None is given, 
+        'tanh' will be used.
 
         If a callable is given, it will be used to compute the activations.
 
@@ -240,6 +240,9 @@ class RandomLayer(BaseRandomLayer):
     # inverse multiquadric RBF
     _inv_multiquadric = (lambda x:
                          1.0/(np.sqrt(1.0 + pow(x, 2.0))))
+                         
+    # rectified linear: max(0, x)
+    _reclinear = (lambda x: np.maximum(0, x))
 
     # internal activation function table
     _internal_activation_funcs = {'sine': np.sin,
@@ -252,6 +255,7 @@ class RandomLayer(BaseRandomLayer):
                                   'gaussian': _gaussian,
                                   'multiquadric': _multiquadric,
                                   'inv_multiquadric': _inv_multiquadric,
+                                  'reclinear': _reclinear
                                   }
 
     def __init__(self, n_hidden=20, alpha=0.5, random_state=None,

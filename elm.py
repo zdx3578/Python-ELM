@@ -363,9 +363,10 @@ class ELMRegressor(BaseEstimator, RegressorMixin):
         Function used to transform input activation
 
         It must be one of 'tanh', 'sine', 'tribas', 'inv_tribase', 'sigmoid',
-        'hardlim', 'softlim', 'gaussian', 'multiquadric', 'inv_multiquadric' or
-        a callable.  If none is given, 'tanh' will be used. If a callable
-        is given, it will be used to compute the hidden unit activations.
+        'hardlim', 'softlim', 'gaussian', 'multiquadric', 'inv_multiquadric',
+        'reclinear' or a callable.  If none is given, 'tanh' will be used. 
+        If a callable is given, it will be used to compute the hidden unit
+        activations.
 
     `activation_args` : dictionary, optional (default=None)
         Supplies keyword arguments for a callable activation_func
@@ -500,9 +501,10 @@ class ELMClassifier(ELMRegressor):
         Function used to transform input activation
 
         It must be one of 'tanh', 'sine', 'tribas', 'inv_tribase', 'sigmoid',
-        'hardlim', 'softlim', 'gaussian', 'multiquadric', 'inv_multiquadric' or
-        a callable.  If none is given, 'tanh' will be used. If a callable
-        is given, it will be used to compute the hidden unit activations.
+        'hardlim', 'softlim', 'gaussian', 'multiquadric', 'inv_multiquadric',
+        'reclinear' or a callable.  If none is given, 'tanh' will be used. 
+        If a callable is given, it will be used to compute the hidden unit
+        activations.
 
     `activation_args` : dictionary, optional (default=None)
         Supplies keyword arguments for a callable activation_func
