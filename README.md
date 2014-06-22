@@ -67,6 +67,7 @@ Transfer functions provided are:
 *	gaussian
 *	multiquadric
 *	inv_multiquadric
+*	reclinear
 
 MLPRandomLayer and RBFRandomLayer classes are just wrappers around the RandomLayer class, with the _alpha_ mixing parameter set to 1.0 and 0.0 respectively (for 100% MLP input activation, or 100% RBF input activation)
 	
