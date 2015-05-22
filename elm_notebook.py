@@ -17,6 +17,14 @@ from sklearn.cluster import k_means
 from elm import ELMClassifier, ELMRegressor, GenELMClassifier, GenELMRegressor
 from random_layer import RandomLayer, MLPRandomLayer, RBFRandomLayer, GRBFRandomLayer
 
+import numpy as np
+from numpy import *
+#import math
+#from math import *
+#import matplotlib
+#import matplotlib.pyplot as plot
+
+
 # <codecell>
 
 def make_toy():
@@ -34,6 +42,8 @@ def res_dist(x, y, e, n_runs=100, random_state=None):
     test_res = []
     train_res = []
     start_time = time()
+
+    print "........res_dist"
 
     for i in xrange(n_runs):
         e.fit(x_train, y_train)
@@ -74,10 +84,10 @@ mrx_train, mrx_test, mry_train, mry_test = train_test_split(mrx, mry, test_size=
 xtoy, ytoy = make_toy()
 xtoy, ytoy = stdsc.fit_transform(xtoy), stdsc.fit_transform(ytoy)
 xtoy_train, xtoy_test, ytoy_train, ytoy_test = train_test_split(xtoy, ytoy, test_size=0.2)
-plot(xtoy, ytoy)
+#plot(xtoy, ytoy)
 
 # <codecell>
-
+print '1'
 # RBFRandomLayer tests
 for af in RandomLayer.activation_func_names():
     print af,
@@ -89,66 +99,66 @@ for af in RandomLayer.activation_func_names():
 elmc.classes_
 
 # <codecell>
-
+print '2'
 for af in RandomLayer.activation_func_names():
     print af
     elmc = ELMClassifier(activation_func=af, random_state=0)
     tr,ts = res_dist(dgx, dgy, elmc, n_runs=100, random_state=0)
 
 # <codecell>
-
+print "3 multiquadric"
 elmc = ELMClassifier(n_hidden=500, activation_func='multiquadric')
 tr,ts = res_dist(dgx, dgy, elmc, n_runs=100, random_state=0)
-scatter(tr, ts, alpha=0.1, marker='D', c='r')
+#scatter(tr, ts, alpha=0.1, marker='D', c='r')
 
 # <codecell>
-
+print "4 gaussian"
 elmr = ELMRegressor(random_state=0, activation_func='gaussian', alpha=0.0)
 elmr.fit(xtoy_train, ytoy_train)
 print elmr.score(xtoy_train, ytoy_train), elmr.score(xtoy_test, ytoy_test)
-plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
+#plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
 
 # <codecell>
-
+print '5 pipeline.multiquadric'
 from sklearn import pipeline
 from sklearn.linear_model import LinearRegression
 elmr = pipeline.Pipeline([('rhl', RandomLayer(random_state=0, activation_func='multiquadric')),
                           ('lr', LinearRegression(fit_intercept=False))])
 elmr.fit(xtoy_train, ytoy_train)
 print elmr.score(xtoy_train, ytoy_train), elmr.score(xtoy_test, ytoy_test)
-plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
+#plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
 
 # <codecell>
-
+print '6 200-200'
 rhl = RandomLayer(n_hidden=200, alpha=1.0)
 elmr = GenELMRegressor(hidden_layer=rhl)
 tr, ts = res_dist(mrx, mry, elmr, n_runs=200, random_state=0)
-scatter(tr, ts, alpha=0.1, marker='D', c='r')
+#scatter(tr, ts, alpha=0.1, marker='D', c='r')
 
 # <codecell>
-
+print '7 rbf rand lay 15'
 rhl = RBFRandomLayer(n_hidden=15, rbf_width=0.8)
 elmr = GenELMRegressor(hidden_layer=rhl)
 elmr.fit(xtoy_train, ytoy_train)
 print elmr.score(xtoy_train, ytoy_train), elmr.score(xtoy_test, ytoy_test)
-plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
+#plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
 
 # <codecell>
 
 nh = 15
 (ctrs, _, _) = k_means(xtoy_train, nh)
 unit_rs = np.ones(nh)
-
+print '8 grbf rand 15'
 #rhl = RBFRandomLayer(n_hidden=nh, activation_func='inv_multiquadric')
 #rhl = RBFRandomLayer(n_hidden=nh, centers=ctrs, radii=unit_rs)
 rhl = GRBFRandomLayer(n_hidden=nh, grbf_lambda=.0001, centers=ctrs)
 elmr = GenELMRegressor(hidden_layer=rhl)
 elmr.fit(xtoy_train, ytoy_train)
 print elmr.score(xtoy_train, ytoy_train), elmr.score(xtoy_test, ytoy_test)
-plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
+#plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
 
 # <codecell>
-
+print '9  -11'
 rbf_rhl = RBFRandomLayer(n_hidden=100, random_state=0, rbf_width=0.01)
 elmc_rbf = GenELMClassifier(hidden_layer=rbf_rhl)
 elmc_rbf.fit(dgx_train, dgy_train)
@@ -157,6 +167,7 @@ print elmc_rbf.score(dgx_train, dgy_train), elmc_rbf.score(dgx_test, dgy_test)
 def powtanh_xfer(activations, power=1.0):
     return pow(np.tanh(activations), power)
 
+print '-12'
 tanh_rhl = MLPRandomLayer(n_hidden=100, activation_func=powtanh_xfer, activation_args={'power':3.0})
 elmc_tanh = GenELMClassifier(hidden_layer=tanh_rhl)
 elmc_tanh.fit(dgx_train, dgy_train)
@@ -164,26 +175,27 @@ print elmc_tanh.score(dgx_train, dgy_train), elmc_tanh.score(dgx_test, dgy_test)
 
 # <codecell>
 
+print '-13'
 rbf_rhl = RBFRandomLayer(n_hidden=100, rbf_width=0.01)
 tr, ts = res_dist(dgx, dgy, GenELMClassifier(hidden_layer=rbf_rhl), n_runs=100, random_state=0)
 
 # <codecell>
 
-hist(ts), hist(tr)
-print
+#hist(ts), hist(tr)
+print '-14'
 
 # <codecell>
 
 from sklearn.svm import SVR
 from sklearn.ensemble import RandomForestRegressor
 tr, ts = res_dist(dbx, dby, RandomForestRegressor(n_estimators=15), n_runs=100, random_state=0)
-hist(tr), hist(ts)
-print
+#hist(tr), hist(ts)
+print '-15'
 
 rhl = RBFRandomLayer(n_hidden=15, rbf_width=0.1)
 tr,ts = res_dist(dbx, dby, GenELMRegressor(rhl), n_runs=100, random_state=0)
-hist(tr), hist(ts)
-print
+#hist(tr), hist(ts)
+print '-16'
 
 # <codecell>
 
@@ -192,22 +204,22 @@ elmc.fit(dgx_train, dgy_train)
 print elmc.score(dgx_train, dgy_train), elmc.score(dgx_test, dgy_test)
 
 # <codecell>
-
+print '-17'
 elmc = ELMClassifier(n_hidden=500, activation_func='hardlim', alpha=1.0, random_state=0)
 elmc.fit(dgx_train, dgy_train)
 print elmc.score(dgx_train, dgy_train), elmc.score(dgx_test, dgy_test)
 
 # <codecell>
-
+print '-18'
 elmr = ELMRegressor(random_state=0)
 elmr.fit(xtoy_train, ytoy_train)
 print elmr.score(xtoy_train, ytoy_train), elmr.score(xtoy_test, ytoy_test)
-plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
+#plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
 
 # <codecell>
-
+print '-19'
 elmr = ELMRegressor(activation_func='inv_tribas', random_state=0)
 elmr.fit(xtoy_train, ytoy_train)
 print elmr.score(xtoy_train, ytoy_train), elmr.score(xtoy_test, ytoy_test)
-plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
+#plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
 
