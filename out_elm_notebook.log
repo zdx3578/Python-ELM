@@ -1,0 +1,204 @@
+python elm_notebook.py 
+
+-1
+softlim ........res_dist
+0 20 40 60 80 100 120 140 160 180 
+Time: 1.116 secs
+Test Min: 0.650 Mean: 0.903 Max: 0.967 SD: 0.041
+Train Min: 0.900 Mean: 0.977 Max: 1.000 SD: 0.018
+
+sigmoid ........res_dist
+0 20 40 60 80 100 120 140 160 180 
+Time: 1.013 secs
+Test Min: 0.883 Mean: 0.937 Max: 0.983 SD: 0.016
+Train Min: 0.978 Mean: 0.994 Max: 1.000 SD: 0.006
+
+gaussian ........res_dist
+0 20 40 60 80 100 120 140 160 180 
+Time: 1.121 secs
+Test Min: 0.850 Mean: 0.925 Max: 0.983 SD: 0.026
+Train Min: 0.967 Mean: 0.991 Max: 1.000 SD: 0.009
+
+inv_multiquadric ........res_dist
+0 20 40 60 80 100 120 140 160 180 
+Time: 1.050 secs
+Test Min: 0.867 Mean: 0.927 Max: 0.967 SD: 0.023
+Train Min: 0.967 Mean: 0.991 Max: 1.000 SD: 0.008
+
+hardlim ........res_dist
+0 20 40 60 80 100 120 140 160 180 
+Time: 0.953 secs
+Test Min: 0.350 Mean: 0.762 Max: 0.950 SD: 0.103
+Train Min: 0.500 Mean: 0.850 Max: 0.978 SD: 0.087
+
+inv_tribas ........res_dist
+0 20 40 60 80 100 120 140 160 180 
+Time: 1.135 secs
+Test Min: 0.767 Mean: 0.885 Max: 0.967 SD: 0.042
+Train Min: 0.889 Mean: 0.971 Max: 1.000 SD: 0.021
+
+multiquadric ........res_dist
+0 20 40 60 80 100 120 140 160 180 
+Time: 1.037 secs
+Test Min: 0.850 Mean: 0.931 Max: 0.967 SD: 0.018
+Train Min: 0.978 Mean: 0.995 Max: 1.000 SD: 0.007
+
+sine ........res_dist
+0 20 40 60 80 100 120 140 160 180 
+Time: 1.052 secs
+Test Min: 0.867 Mean: 0.931 Max: 0.983 SD: 0.018
+Train Min: 0.967 Mean: 0.995 Max: 1.000 SD: 0.007
+
+tanh ........res_dist
+0 20 40 60 80 100 120 140 160 180 
+Time: 0.977 secs
+Test Min: 0.867 Mean: 0.930 Max: 0.983 SD: 0.023
+Train Min: 0.967 Mean: 0.992 Max: 1.000 SD: 0.007
+
+reclinear ........res_dist
+0 20 40 60 80 100 120 140 160 180 
+Time: 1.026 secs
+Test Min: 0.850 Mean: 0.925 Max: 0.983 SD: 0.023
+Train Min: 0.967 Mean: 0.991 Max: 1.000 SD: 0.008
+
+tribas ........res_dist
+0 20 40 60 80 100 120 140 160 180 
+Time: 0.890 secs
+Test Min: 0.717 Mean: 0.880 Max: 0.967 SD: 0.051
+Train Min: 0.833 Mean: 0.963 Max: 1.000 SD: 0.032
+
+-2
+softlim
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 3.129 secs
+Test Min: 0.620 Mean: 0.620 Max: 0.620 SD: 0.000
+Train Min: 0.660 Mean: 0.660 Max: 0.660 SD: 0.000
+
+sigmoid
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 3.327 secs
+Test Min: 0.683 Mean: 0.683 Max: 0.683 SD: 0.000
+Train Min: 0.738 Mean: 0.738 Max: 0.738 SD: 0.000
+
+gaussian
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 3.363 secs
+Test Min: 0.420 Mean: 0.420 Max: 0.420 SD: 0.000
+Train Min: 0.454 Mean: 0.454 Max: 0.454 SD: 0.000
+
+inv_multiquadric
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 3.125 secs
+Test Min: 0.634 Mean: 0.634 Max: 0.634 SD: 0.000
+Train Min: 0.657 Mean: 0.657 Max: 0.657 SD: 0.000
+
+hardlim
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 3.134 secs
+Test Min: 0.517 Mean: 0.517 Max: 0.517 SD: 0.000
+Train Min: 0.599 Mean: 0.599 Max: 0.599 SD: 0.000
+
+inv_tribas
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 3.083 secs
+Test Min: 0.275 Mean: 0.275 Max: 0.275 SD: 0.000
+Train Min: 0.355 Mean: 0.355 Max: 0.355 SD: 0.000
+
+multiquadric
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 3.041 secs
+Test Min: 0.697 Mean: 0.697 Max: 0.697 SD: 0.000
+Train Min: 0.737 Mean: 0.737 Max: 0.737 SD: 0.000
+
+sine
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 3.607 secs
+Test Min: 0.191 Mean: 0.191 Max: 0.191 SD: 0.000
+Train Min: 0.234 Mean: 0.234 Max: 0.234 SD: 0.000
+
+tanh
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 3.853 secs
+Test Min: 0.627 Mean: 0.627 Max: 0.627 SD: 0.000
+Train Min: 0.680 Mean: 0.680 Max: 0.680 SD: 0.000
+
+reclinear
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 3.321 secs
+Test Min: 0.759 Mean: 0.759 Max: 0.759 SD: 0.000
+Train Min: 0.814 Mean: 0.814 Max: 0.814 SD: 0.000
+
+tribas
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 3.371 secs
+Test Min: 0.292 Mean: 0.292 Max: 0.292 SD: 0.000
+Train Min: 0.356 Mean: 0.356 Max: 0.356 SD: 0.000
+
+-3 multiquadric
+........res_dist
+
+0 10 20 30 40 50 60 70 80 90 
+Time: 200.337 secs
+Test Min: 0.853 Mean: 0.881 Max: 0.908 SD: 0.011
+Train Min: 0.996 Mean: 0.999 Max: 1.000 SD: 0.001
+
+-4 gaussian regressor
+0.9700842009 0.940654059627
+-5 pipeline.multiquadric
+0.874807392837 0.747568973382
+-6 200 hidden-n 
+........res_dist
+0 20 40 60 80 100 120 140 160 180 
+Time: 78.178 secs
+Test Min: 0.565 Mean: 0.656 Max: 0.735 SD: 0.032
+Train Min: 0.717 Mean: 0.779 Max: 0.834 SD: 0.019
+
+-7 rbf rand lay 15
+0.969577495427 0.931222001922
+-8 grbf rand 15
+0.964014116944 0.899750452492
+-9  -11 classify
+0.961029923452 0.936111111111
+-12
+0.94363256785 0.947222222222
+-13
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 17.030 secs
+Test Min: 0.918 Mean: 0.928 Max: 0.943 SD: 0.005
+Train Min: 0.960 Mean: 0.966 Max: 0.976 SD: 0.003
+
+-14
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 8.366 secs
+Test Min: 0.239 Mean: 0.298 Max: 0.364 SD: 0.028
+Train Min: 0.896 Mean: 0.908 Max: 0.920 SD: 0.005
+
+-15
+........res_dist
+0 10 20 30 40 50 60 70 80 90 
+Time: 0.586 secs
+Test Min: 0.357 Mean: 0.386 Max: 0.411 SD: 0.012
+Train Min: 0.572 Mean: 0.585 Max: 0.597 SD: 0.005
+
+-16
+0.100904662491 0.102777777778
+-17
+0.997912317328 0.963888888889
+-18
+0.884943094977 0.616087474704
+-19
+0.929240272859 0.782108797721
+
