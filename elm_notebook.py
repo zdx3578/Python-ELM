@@ -87,7 +87,7 @@ xtoy_train, xtoy_test, ytoy_train, ytoy_test = train_test_split(xtoy, ytoy, test
 #plot(xtoy, ytoy)
 
 # <codecell>
-print '1'
+print '-1'
 # RBFRandomLayer tests
 for af in RandomLayer.activation_func_names():
     print af,
@@ -99,27 +99,27 @@ for af in RandomLayer.activation_func_names():
 elmc.classes_
 
 # <codecell>
-print '2'
+print '-2'
 for af in RandomLayer.activation_func_names():
     print af
     elmc = ELMClassifier(activation_func=af, random_state=0)
     tr,ts = res_dist(dgx, dgy, elmc, n_runs=100, random_state=0)
 
 # <codecell>
-print "3 multiquadric"
+print "-3 multiquadric"
 elmc = ELMClassifier(n_hidden=500, activation_func='multiquadric')
 tr,ts = res_dist(dgx, dgy, elmc, n_runs=100, random_state=0)
 #scatter(tr, ts, alpha=0.1, marker='D', c='r')
 
 # <codecell>
-print "4 gaussian"
+print "-4 gaussian regressor"
 elmr = ELMRegressor(random_state=0, activation_func='gaussian', alpha=0.0)
 elmr.fit(xtoy_train, ytoy_train)
 print elmr.score(xtoy_train, ytoy_train), elmr.score(xtoy_test, ytoy_test)
 #plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
 
 # <codecell>
-print '5 pipeline.multiquadric'
+print '-5 pipeline.multiquadric'
 from sklearn import pipeline
 from sklearn.linear_model import LinearRegression
 elmr = pipeline.Pipeline([('rhl', RandomLayer(random_state=0, activation_func='multiquadric')),
@@ -129,14 +129,14 @@ print elmr.score(xtoy_train, ytoy_train), elmr.score(xtoy_test, ytoy_test)
 #plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
 
 # <codecell>
-print '6 200-200'
+print '-6 200 hidden-n '
 rhl = RandomLayer(n_hidden=200, alpha=1.0)
 elmr = GenELMRegressor(hidden_layer=rhl)
 tr, ts = res_dist(mrx, mry, elmr, n_runs=200, random_state=0)
 #scatter(tr, ts, alpha=0.1, marker='D', c='r')
 
 # <codecell>
-print '7 rbf rand lay 15'
+print '-7 rbf rand lay 15'
 rhl = RBFRandomLayer(n_hidden=15, rbf_width=0.8)
 elmr = GenELMRegressor(hidden_layer=rhl)
 elmr.fit(xtoy_train, ytoy_train)
@@ -148,7 +148,7 @@ print elmr.score(xtoy_train, ytoy_train), elmr.score(xtoy_test, ytoy_test)
 nh = 15
 (ctrs, _, _) = k_means(xtoy_train, nh)
 unit_rs = np.ones(nh)
-print '8 grbf rand 15'
+print '-8 grbf rand 15'
 #rhl = RBFRandomLayer(n_hidden=nh, activation_func='inv_multiquadric')
 #rhl = RBFRandomLayer(n_hidden=nh, centers=ctrs, radii=unit_rs)
 rhl = GRBFRandomLayer(n_hidden=nh, grbf_lambda=.0001, centers=ctrs)
@@ -158,7 +158,7 @@ print elmr.score(xtoy_train, ytoy_train), elmr.score(xtoy_test, ytoy_test)
 #plot(xtoy, ytoy, xtoy, elmr.predict(xtoy))
 
 # <codecell>
-print '9  -11'
+print '-9  -11 classify'
 rbf_rhl = RBFRandomLayer(n_hidden=100, random_state=0, rbf_width=0.01)
 elmc_rbf = GenELMClassifier(hidden_layer=rbf_rhl)
 elmc_rbf.fit(dgx_train, dgy_train)
